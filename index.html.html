@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ras Services — Property, Roofing & Landscaping, Hull</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3a1f;
+    --green-mid: #2d5c35;
+    --green-bright: #4a8c55;
+    --green-light: #7dbf7a;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --gold: #c9a84c;
+    --brown: #5c3d1e;
+    --text-dark: #1a1a14;
+    --text-mid: #4a4a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(26,58,31,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(245,240,232,0.75);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--green-deep) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: #e0bc65 !important; color: var(--green-deep) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .star { color: var(--gold); font-size: 0.9rem; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--green-light);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--green-deep);
+    padding: 1rem 2.2rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: #e0bc65; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 1rem 2.2rem;
+    border: 1px solid rgba(245,240,232,0.3);
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--cream); background: rgba(245,240,232,0.07); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image-grid {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    padding: 6rem 4rem 4rem 2rem;
+    animation: fadeIn 1s 0.4s ease both;
+  }
+
+  .hero-img-top {
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80') center/cover;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-img-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .hero-img-bl {
+    background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80') center/cover;
+    border-radius: 4px;
+  }
+  .hero-img-br {
+    background: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80') center/cover;
+    border-radius: 4px;
+  }
+
+  /* Decorative shapes */
+  .hero-shape {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,140,85,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-shape2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    bottom: 100px; left: 50px;
+    pointer-events: none;
+  }
+
+  /* ── STATS BAR ── */
+  .stats {
+    background: var(--green-mid);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    padding: 7rem 4rem;
+    background: var(--warm-white);
+  }
+  .section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--green-deep);
+    line-height: 1.2;
+    max-width: 500px;
+    margin-bottom: 4rem;
+  }
+  .section-title em { font-style: italic; color: var(--green-bright); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(26,58,31,0.1);
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    padding: 3rem 2.5rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--green-deep); }
+  .service-card:hover .service-icon { color: var(--gold); }
+  .service-card:hover .service-name { color: var(--cream); }
+  .service-card:hover .service-desc { color: rgba(245,240,232,0.6); }
+
+  .service-icon {
+    font-size: 2.5rem;
+    color: var(--green-bright);
+    margin-bottom: 1.5rem;
+    display: block;
+    transition: color 0.4s;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--green-deep);
+    margin-bottom: 0.8rem;
+    transition: color 0.4s;
+  }
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    transition: color 0.4s;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--cream);
+    padding: 7rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: url('https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=800&q=80') center/cover;
+    border-radius: 4px;
+  }
+  .about-img-accent {
+    position: absolute;
+    bottom: -2rem; right: -2rem;
+    width: 55%;
+    aspect-ratio: 1;
+    background: url('https://images.unsplash.com/photo-1592150621744-aca64f48394a?w=400&q=80') center/cover;
+    border-radius: 4px;
+    border: 6px solid var(--cream);
+  }
+  .about-badge-float {
+    position: absolute;
+    top: 2rem; left: -2rem;
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(26,58,31,0.3);
+  }
+  .about-badge-float .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .about-badge-float .lbl {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+  }
+
+  .about-content .section-title { margin-bottom: 1.5rem; }
+  .about-text {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .about-contact {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+  }
+  .contact-icon {
+    width: 36px; height: 36px;
+    background: var(--green-deep);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews {
+    padding: 7rem 4rem;
+    background: var(--green-deep);
+  }
+  .reviews .section-tag { color: var(--green-light); }
+  .reviews .section-title { color: var(--cream); max-width: 600px; }
+  .reviews .section-title em { color: var(--green-light); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2.5rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .review-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+  .review-stars {
+    display: flex; gap: 3px; margin-bottom: 1.2rem;
+  }
+  .review-stars span { color: var(--gold); font-size: 1rem; }
+  .review-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .review-author {
+    font-size: 0.85rem;
+    color: var(--green-light);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .review-date {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.4);
+    margin-top: 0.2rem;
+  }
+
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.8rem 1.5rem;
+    border-radius: 100px;
+    margin-top: 3rem;
+    color: rgba(245,240,232,0.6);
+    font-size: 0.85rem;
+  }
+  .google-g {
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--gold);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: var(--green-deep);
+    line-height: 1.2;
+  }
+  .cta-sub {
+    font-size: 1rem;
+    color: rgba(26,58,31,0.65);
+    margin-top: 0.8rem;
+    font-weight: 300;
+  }
+  .btn-dark {
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 1.1rem 2.8rem;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .btn-dark:hover { background: var(--green-mid); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111810;
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-text {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.35);
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── SERVICE CATEGORIES ── */
+  .service-categories {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .cat-btn {
+    padding: 0.5rem 1.3rem;
+    border: 1px solid rgba(26,58,31,0.2);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-weight: 500;
+  }
+  .cat-btn:hover, .cat-btn.active {
+    background: var(--green-deep);
+    color: var(--cream);
+    border-color: var(--green-deep);
+  }
+  .cat-section { margin-bottom: 4rem; }
+  .cat-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--green-deep);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 7rem 2rem 4rem; }
+    .stats { gap: 2rem; padding: 2rem 1.5rem; flex-wrap: wrap; }
+    .services { padding: 5rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    .about-image-wrap { display: none; }
+    .reviews { padding: 5rem 1.5rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .cta { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ras <span>Services</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="hero-shape2"></div>
+
+  <div class="hero-left">
+    <div class="badge">
+      <span class="star">★★★★★</span>
+      5.0 on Google · Hull's Trusted Tradesmen
+    </div>
+    <h1>One Call.<em>Every Job Done.</em></h1>
+    <p class="hero-sub">From roofing and housing repairs to landscaping and garden care — Ras Services covers it all across Hull and the surrounding area. Quality work, honest prices, always reliable.</p>
+    <div class="hero-actions">
+      <a href="tel:07890846440" class="btn-primary">📞 Call Richard</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-grid">
+      <div class="hero-img-top"></div>
+      <div class="hero-img-bottom">
+        <div class="hero-img-bl"></div>
+        <div class="hero-img-br"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">5.0★</div>
+    <div class="stat-label">Google Rating</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Services Offered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Always Available</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag">What We Do</div>
+  <h2 class="section-title">All the Services <em>You Need</em></h2>
+
+  <!-- ROOFING -->
+  <div class="cat-section" id="cat-roofing">
+    <div class="cat-section-title">🏠 Roofing</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Roof Repairs</div>
+        <p class="service-desc">Leaks, missing tiles, cracked felt — we diagnose and fix roof problems fast before they become costly damage inside your home.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏗️</span>
+        <div class="service-name">New Roof Installation</div>
+        <p class="service-desc">Full re-roofing using quality materials. Pitched, flat, or felt roofs — we handle the whole job from stripping to finishing.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Chimney & Flashing</div>
+        <p class="service-desc">Repointing, capping, lead flashing repairs and replacements. We keep your chimney watertight and structurally sound.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🪟</span>
+        <div class="service-name">Fascias, Soffits & Guttering</div>
+        <p class="service-desc">Replacement fascias and soffits in uPVC or wood. Gutter clearing, repairs, and full new installations to protect your roofline.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Flat Roof Specialist</div>
+        <p class="service-desc">EPDM rubber, felt, and GRP fibreglass flat roofs. Long-lasting solutions for garages, extensions, and outbuildings.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔍</span>
+        <div class="service-name">Roof Inspections</div>
+        <p class="service-desc">Thorough inspection and honest report on the condition of your roof. Ideal before buying a property or after storm damage.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOUSING & PROPERTY -->
+  <div class="cat-section" id="cat-housing">
+    <div class="cat-section-title">🏡 Housing & Property Maintenance</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🪣</span>
+        <div class="service-name">General Building Repairs</div>
+        <p class="service-desc">Brickwork, pointing, rendering, and general masonry repairs. We keep your property's structure sound and looking sharp.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Interior & Exterior Painting</div>
+        <p class="service-desc">Full interior decorating or exterior painting and rendering. Clean, professional finish every time — no mess left behind.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚪</span>
+        <div class="service-name">Doors & Windows</div>
+        <p class="service-desc">Fitting and repairing doors, frames, and windows. Draughty, stiff, or broken — we sort it quickly and correctly.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛁</span>
+        <div class="service-name">Bathroom & Kitchen Fitting</div>
+        <p class="service-desc">Full bathroom and kitchen installations or refits. Tiling, plumbing connections, and finishing all taken care of.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚡</span>
+        <div class="service-name">Odd Jobs & Handyman</div>
+        <p class="service-desc">No job too small. Shelves, flat-packs, repairs, fencing, gates — if it needs doing around the house, we can handle it.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏘️</span>
+        <div class="service-name">Landlord Property Care</div>
+        <p class="service-desc">Regular maintenance packages for landlords. Keep your properties in top condition between tenancies — reliable and cost-effective.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRIVEWAYS & OUTDOOR -->
+  <div class="cat-section" id="cat-driveways">
+    <div class="cat-section-title">🛣️ Driveways & Outdoor Spaces</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🚗</span>
+        <div class="service-name">Driveway Installation</div>
+        <p class="service-desc">Block paving, tarmac, gravel, and resin driveways. Transform your kerb appeal with a fresh, hard-wearing driveway.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🪨</span>
+        <div class="service-name">Paving & Patios</div>
+        <p class="service-desc">New patio areas, path laying, and paving repairs. Solid, attractive outdoor spaces designed to last.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Fencing & Walls</div>
+        <p class="service-desc">Garden fencing, brick walls, and retaining walls. We build and repair all types to give your property privacy and security.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GARDENING -->
+  <div class="cat-section" id="cat-gardening">
+    <div class="cat-section-title">🌿 Gardening & Landscaping</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">✂️</span>
+        <div class="service-name">Lawn Mowing & Edging</div>
+        <p class="service-desc">Regular or one-off cuts leaving your lawn looking immaculate. Precise edging for that perfectly manicured finish.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌿</span>
+        <div class="service-name">Hedge Trimming</div>
+        <p class="service-desc">Neat, shaped hedges that define your garden's boundaries. All shapes and sizes handled with skill and care.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌱</span>
+        <div class="service-name">Planting & Borders</div>
+        <p class="service-desc">Seasonal planting, border maintenance, and garden design. We help your outdoor space bloom all year round.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🍂</span>
+        <div class="service-name">Garden Clearance</div>
+        <p class="service-desc">Full clearance of overgrown or neglected gardens. Waste removed, leaving a clean slate ready for a fresh start.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌳</span>
+        <div class="service-name">Tree & Shrub Care</div>
+        <p class="service-desc">Pruning, shaping, and general care for trees and shrubs. Keeping your larger plants healthy and beautiful.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💧</span>
+        <div class="service-name">Jet Washing</div>
+        <p class="service-desc">Patios, paths, driveways, and decking brought back to life. Powerful, professional cleaning that makes surfaces look brand new.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-wrap">
+    <div class="about-img-main"></div>
+    <div class="about-img-accent"></div>
+    <div class="about-badge-float">
+      <span class="num">★ 5.0</span>
+      <span class="lbl">Google Reviews</span>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="section-tag">About Richard</div>
+    <h2 class="section-title">A Gardener Who <em>Truly Cares</em></h2>
+    <p class="about-text">Richard has been serving homes and properties across Hull for many years. From roofing and building repairs to landscaping and garden maintenance — he's the one local people call when they need a job done properly.</p>
+    <p class="about-text">What sets Richard apart is simple: reliability, honest pricing, and quality you can see. His clients keep coming back year after year because he treats every property like his own.</p>
+
+    <div class="about-contact" id="contact">
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <a href="tel:07890846440" style="text-decoration:none; color:inherit; font-weight:500;">07890 846440</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <span>80 Sandford Cl, Hull HU7 4HL</span>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🕐</div>
+        <span>Open 24 hours — call any time</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-tag">Customer Reviews</div>
+  <h2 class="section-title">What Our Customers <em>Say</em></h2>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="review-text">"Richard has been coming to me for several years, always done a great job and again this time. Would strongly recommend him — always doing a great job."</p>
+      <div class="review-author">Angela Burgess</div>
+      <div class="review-date">11 months ago · Google Review</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="review-text">"Good job well done. I would recommend him to anyone."</p>
+      <div class="review-author">Alan Cookson</div>
+      <div class="review-date">A year ago · Google Review</div>
+    </div>
+  </div>
+
+  <div class="google-badge">
+    <span class="google-g">G</span>
+    <span>5.0 out of 5 on Google Maps</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div>
+    <h2 class="cta-title">Need a Job Done Right?</h2>
+    <p class="cta-sub">Give Richard a call — free quotes, no obligation, just quality work at honest prices.</p>
+  </div>
+  <a href="tel:07890846440" class="btn-dark">📞 07890 846440</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ras <span>Services</span></div>
+  <div class="footer-text">© 2025 Ras Services · Hull, East Yorkshire</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="tel:07890846440">Call Us</a>
+  </div>
+</footer>
+
+</body>
+</html>
